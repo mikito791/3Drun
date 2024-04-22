@@ -11,6 +11,8 @@ GameOverScene::GameOverScene(GameObject* parent)
 
 void GameOverScene::Initialize()
 {
+	hPict = Image::Load("Model\\clear.png");
+	assert(hPict >= 0);
 }
 
 void GameOverScene::Update()
@@ -24,6 +26,8 @@ void GameOverScene::Update()
 
 void GameOverScene::Draw()
 {
+	Image::SetTransform(hPict, transform_);
+	Image::Draw(hPict);
 }
 
 void GameOverScene::Release()

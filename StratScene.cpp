@@ -9,7 +9,8 @@ StratScene::StratScene(GameObject* parent)
 
 void StratScene::Initialize()
 {
-
+	hPict = Image::Load("Model\\Title.png");
+	assert(hPict >= 0);
 }
 
 void StratScene::Update()
@@ -23,6 +24,8 @@ void StratScene::Update()
 
 void StratScene::Draw()
 {
+	Image::SetTransform(hPict, transform_);
+	Image::Draw(hPict);
 }
 
 void StratScene::Release()
