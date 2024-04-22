@@ -149,9 +149,11 @@
     <ClCompile Include="Engine\Text.cpp" />
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="Load.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Playscene.cpp" />
+    <ClCompile Include="StratScene.cpp" />
     <ClCompile Include="TestScene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -179,9 +181,11 @@
     <ClInclude Include="Engine\Text.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
+    <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="Load.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Playscene.h" />
+    <ClInclude Include="StratScene.h" />
     <ClInclude Include="TestScene.h" />
   </ItemGroup>
   <ItemGroup>

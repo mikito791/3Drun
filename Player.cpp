@@ -3,6 +3,7 @@
 #include"Engine/Model.h"
 #include"Engine/Input.h"
 #include"Engine/SphereCollider.h"
+#include"Engine/SceneManager.h"
 
 Player::Player(GameObject* parent)
 	:GameObject(parent, "Player"), hModel_(-1)
@@ -72,5 +73,7 @@ void Player::OnCollision(GameObject* pTarget)
 	{
 		this->KillMe();
 		pTarget->KillMe();
+		SceneManager* pSM = (SceneManager*)(FindObject("SceneManager"));
+		pSM->ChangeScene(SCENE_ID::SCENE_ID_GAMEOVER);
 	}
 }

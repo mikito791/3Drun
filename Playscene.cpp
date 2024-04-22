@@ -19,7 +19,7 @@ void Playscene::Initialize()
 	Instantiate<Load>(this);
 	Instantiate<Player>(this);
 	enemyNum = ENEMY_NUM;
-	switch (random)
+	/*switch (random)
 	{
 	case 0:
 		for (int i = 0; i < enemyNum; i++)
@@ -44,7 +44,8 @@ void Playscene::Initialize()
 		e2->SetPosition(1.5, 0, 20);
 
 		break;
-	}
+	}*/
+	
 }
 
 void Playscene::Update()
@@ -52,7 +53,7 @@ void Playscene::Update()
 	counter -= 1;
 	if (counter <= 0)
 	{
-		counter = 100;
+		counter = 50;
 		Random = (lastLane + rand() % 2 + 1) % 3;
 		lastLane = Random;
 		Enemy* e = nullptr;

@@ -24,16 +24,7 @@ void Enemy::Update()
 	if (transform_.position_.z < -2)
 	{
 		this->KillMe();
-		/*for (int a = 0; a < 3; a++) {
-			switch (a)
-			{
-			case 0:
-			    transform_.position_.x = 1.5;
-				break;
-			default:
-				break;
-			}
-		}*/
+
 	}
 }
 

@@ -1,6 +1,8 @@
 #include "sceneManager.h"
 #include"../Playscene.h"
 #include "../TestScene.h"
+#include"../StratScene.h"
+#include"../GameOverScene.h"
 #include "Model.h"
 #include "Image.h"
 #include "Audio.h"
@@ -16,9 +18,9 @@ SceneManager::SceneManager(GameObject * parent)
 void SceneManager::Initialize()
 {
 	//最初のシーンを準備
-	currentSceneID_ = SCENE_ID_PLAY;
+	currentSceneID_ = SCENE_ID_STRAT;
 	nextSceneID_ = currentSceneID_;
-	Instantiate<Playscene>(this);
+	Instantiate<StratScene>(this);
 }
 
 //更新
@@ -38,8 +40,9 @@ void SceneManager::Update()
 		//次のシーンを作成
 		switch (nextSceneID_)
 		{
-		//case SCENE_ID_TEST: Instantiate<TestScene>(this); break;
+		case SCENE_ID_STRAT: Instantiate<StratScene>(this); break;
 		case SCENE_ID_PLAY: Instantiate<Playscene>(this); break;
+		case SCENE_ID_GAMEOVER: Instantiate<GameOverScene>(this); break;
 		}
 		Audio::Initialize();
 		currentSceneID_ = nextSceneID_;
