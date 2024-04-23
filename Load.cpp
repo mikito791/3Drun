@@ -1,6 +1,5 @@
 #include "Load.h"
 #include"Engine/Model.h"
-#include"Engine/Camera.h"
 
 Load::Load(GameObject* parent)
 	:GameObject(parent,"Load"),hModel_(-1)
@@ -11,8 +10,6 @@ void Load::Initialize()
 {
 	hModel_ = Model::Load("Model\\Floor.fbx");
 	assert(hModel_ >= 0);
-	Camera::SetPosition(XMFLOAT3(0.5, 10, -5));
-	Camera::SetTarget(XMFLOAT3(0.5, 0, 5));
 }
 
 void Load::Update()
