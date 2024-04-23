@@ -4,7 +4,15 @@
 #include"Engine/Input.h"
 #include"Engine/SphereCollider.h"
 #include"Engine/SceneManager.h"
-
+#include"Engine/Camera.h"
+enum CAM_TYPE//カメラ切り替え
+{
+	FIXED_TYPE,//固定
+	TPS_NOROT_TYPE,
+	//TPS_TYPE,//3人称
+	//FPS_TYPE,
+	MAX_TYPE,//番兵さん（チェック用の値）
+};
 Player::Player(GameObject* parent)
 	:GameObject(parent, "Player"), hModel_(-1)
 {
@@ -54,6 +62,32 @@ void Player::Update()
 		{
 			transform_.position_.z = 0.5;
 		}
+	}
+	if (Input::IsKeyDown(DIK_Z))
+	{
+		camState++;
+		if (camState == CAM_TYPE::MAX_TYPE)
+			camState = CAM_TYPE::FIXED_TYPE;
+	}
+	switch (camState)
+	{
+	case CAM_TYPE::FIXED_TYPE:
+	{
+		Camera::SetPosition(XMFLOAT3(0.5, 10, -5));
+		Camera::SetTarget(XMFLOAT3(0.5, 0, 5));
+		break;
+	}
+	case CAM_TYPE::TPS_NOROT_TYPE:
+	{
+		XMFLOAT3 camPos = transform_.position_;
+		camPos.y = transform_.position_.y + 5.0f;
+		camPos.z = transform_.position_.z - 10.0f;
+		Camera::SetPosition(camPos);
+		Camera::SetTarget(transform_.position_);
+		break;
+	}
+	default:
+		break;
 	}
 }
 

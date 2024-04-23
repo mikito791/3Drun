@@ -4,6 +4,7 @@ class Player :
     public GameObject
 {
     int hModel_;
+	int camState;
 public:
 	Player(GameObject* parent);
 	//‰Šú‰»
