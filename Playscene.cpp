@@ -45,7 +45,6 @@ void Playscene::Initialize()
 
 		break;
 	}*/
-	
 }
 
 void Playscene::Update()
