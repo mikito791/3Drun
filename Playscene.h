@@ -8,6 +8,7 @@ class Playscene :
 	int counter;
 	int Random;
 	int lastLane = -1;
+	int enemyCount;
 	//random = 2.0 * random;
 public:
 	

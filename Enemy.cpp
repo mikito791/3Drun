@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include"Engine/Model.h"
 #include"Engine/SphereCollider.h"
+#include"Engine/SceneManager.h"
 
 Enemy::Enemy(GameObject* parent)
 	:GameObject(parent, "Enemy"), hModel_(-1)
@@ -23,7 +24,7 @@ void Enemy::Update()
 	transform_.position_.z -= 0.1;
 	if (transform_.position_.z < -2)
 	{
-		this->KillMe();
+		this->KillMe();		
 
 	}
 }

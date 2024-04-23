@@ -1,12 +1,13 @@
 #pragma once
 #include "Engine/GameObject.h"
-class Enemy :
+class Clear :
     public GameObject
 {
-	int hModel_;
-	int enemyCount;
+	int hPict;
 public:
-	Enemy(GameObject* parent);
+
+	Clear(GameObject* parent);
+	~Clear();
 	//‰Šú‰»
 	void Initialize() override;
 
