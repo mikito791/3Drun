@@ -105,7 +105,6 @@ void Player::OnCollision(GameObject* pTarget)
 {
 	if (pTarget->GetObjectName() == "Enemy")
 	{
-		this->KillMe();
 		pTarget->KillMe();
 		SceneManager* pSM = (SceneManager*)(FindObject("SceneManager"));
 		pSM->ChangeScene(SCENE_ID::SCENE_ID_GAMEOVER);
