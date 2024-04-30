@@ -150,6 +150,7 @@
     <ClCompile Include="Engine\Texture.cpp" />
     <ClCompile Include="Engine\Transform.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
+    <ClCompile Include="Gauge.cpp" />
     <ClCompile Include="Load.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Playscene.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Transform.h" />
     <ClInclude Include="GameOverScene.h" />
+    <ClInclude Include="Gauge.h" />
     <ClInclude Include="Load.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Playscene.h" />

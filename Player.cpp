@@ -1,5 +1,6 @@
 #include "Player.h"
 #include<assert.h>
+#include"Gauge.h"
 #include"Engine/Model.h"
 #include"Engine/Input.h"
 #include"Engine/SphereCollider.h"
@@ -11,10 +12,12 @@ enum CAM_TYPE//カメラ切り替え
 	TPS_NOROT_TYPE,
 	//TPS_TYPE,//3人称
 	//FPS_TYPE,
+	Vibration_TYPE,
 	MAX_TYPE,//番兵さん（チェック用の値）
 };
 Player::Player(GameObject* parent)
-	:GameObject(parent, "Player"), hModel_(-1)
+	:GameObject(parent, "Player"), hModel_(-1),
+	pGauge_(nullptr), hpCrr_(10), hpMax_(10)
 {
 }
 
@@ -86,6 +89,20 @@ void Player::Update()
 		Camera::SetTarget(transform_.position_);
 		break;
 	}
+	case CAM_TYPE::Vibration_TYPE:
+	{
+		XMFLOAT3 pos = transform_.position_;
+		randomY += rand() % 3;
+		pos.y = randomY;
+		pos.z = transform_.position_.z- 10.0f;
+		Camera::SetPosition(pos);
+		XMFLOAT3 tarpos=transform_.position_;
+		randomY += rand() % 1;
+		tarpos.y = randomY;
+		tarpos.z = transform_.position_.z - 1.0f;
+		Camera::SetTarget(tarpos);
+		break;
+	}
 	default:
 		break;
 	}
@@ -103,10 +120,16 @@ void Player::Release()
 
 void Player::OnCollision(GameObject* pTarget)
 {
+	Gauge* pGauge_ = (Gauge*)FindObject("Gauge");
+	pGauge_->SetGaugeVal(hpCrr_, hpMax_);
 	if (pTarget->GetObjectName() == "Enemy")
 	{
 		pTarget->KillMe();
-		SceneManager* pSM = (SceneManager*)(FindObject("SceneManager"));
-		pSM->ChangeScene(SCENE_ID::SCENE_ID_GAMEOVER);
+		hpCrr_ = hpCrr_ - 2;
+		if (hpCrr_ < 0) {
+			hpCrr_ = 0;
+			SceneManager* pSM = (SceneManager*)(FindObject("SceneManager"));
+			pSM->ChangeScene(SCENE_ID::SCENE_ID_GAMEOVER);
+		}
 	}
 }

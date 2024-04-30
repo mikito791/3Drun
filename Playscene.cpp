@@ -2,6 +2,7 @@
 #include"Player.h"
 #include"Enemy.h"
 #include"Load.h"
+#include"Gauge.h"
 #include"Engine/SceneManager.h"
 namespace
 {
@@ -17,6 +18,7 @@ void Playscene::Initialize()
 {
 	
 	Instantiate<Load>(this);
+	Instantiate<Gauge>(this);
 	Instantiate<Player>(this);
 	enemyNum = ENEMY_NUM;
 	/*switch (random)
