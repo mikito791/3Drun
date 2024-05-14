@@ -6,8 +6,7 @@ class Player :
 {
     int hModel_;
 	int camState;
-	int randomX;
-	int randomY;
+
 	Gauge* pGauge_;
 	int hpCrr_;
 	int hpMax_;

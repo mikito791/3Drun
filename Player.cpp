@@ -6,13 +6,12 @@
 #include"Engine/SphereCollider.h"
 #include"Engine/SceneManager.h"
 #include"Engine/Camera.h"
+
 enum CAM_TYPE//カメラ切り替え
 {
 	FIXED_TYPE,//固定
 	TPS_NOROT_TYPE,
-	//TPS_TYPE,//3人称
-	//FPS_TYPE,
-	Vibration_TYPE,
+
 	MAX_TYPE,//番兵さん（チェック用の値）
 };
 Player::Player(GameObject* parent)
@@ -89,20 +88,7 @@ void Player::Update()
 		Camera::SetTarget(transform_.position_);
 		break;
 	}
-	case CAM_TYPE::Vibration_TYPE:
-	{
-		XMFLOAT3 pos = transform_.position_;
-		randomY += rand() % 3;
-		pos.y = randomY;
-		pos.z = transform_.position_.z- 10.0f;
-		Camera::SetPosition(pos);
-		XMFLOAT3 tarpos=transform_.position_;
-		randomY += rand() % 1;
-		tarpos.y = randomY;
-		tarpos.z = transform_.position_.z - 1.0f;
-		Camera::SetTarget(tarpos);
-		break;
-	}
+	
 	default:
 		break;
 	}
